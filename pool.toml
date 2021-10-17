@@ -23,12 +23,12 @@ root_workdir = "./datastore/pool"
     skip_check_chance = 0.5
 
     # Number of worker threads
-    num_workers = 8
+    num_workers = 16
 
     # Length of the input queue, keeping this low will create back-pressure
     # and prevent miners from posting too many announcements when the server
     # is in fact overloaded
-    input_queue_len = 256
+    input_queue_len = 512
 
     # The public URL of this ann handler
     public_url = "http://this.server/submit"
@@ -42,7 +42,7 @@ root_workdir = "./datastore/pool"
     bind_pvt = "192.168.123.234:6666"
 
     # How many threads to occupy with running sprayer
-    spray_workers = 8
+    spray_workers = 16
 
     # Subscribe to other sprayer nodes? Typically a handler will not do this.
     subscribe_to = []

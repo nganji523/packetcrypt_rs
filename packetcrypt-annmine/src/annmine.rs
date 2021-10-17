@@ -14,8 +14,8 @@ use std::sync::Arc;
 use std::sync::Mutex;
 use tokio::sync::mpsc::{self, Receiver, Sender, UnboundedReceiver};
 
-const RECENT_WORK_BUF: usize = 8;
-const MAX_ANN_BATCH_SIZE: usize = 1024;
+const RECENT_WORK_BUF: usize = 16;
+const MAX_ANN_BATCH_SIZE: usize = 2048;
 const MAX_MS_BETWEEN_POSTS: u64 = 10_000;
 
 struct AnnBatch {
@@ -31,7 +31,7 @@ struct Handler {
     send_upload: Sender<AnnBatch>,
 }
 
-const STATS_SECONDS_TO_KEEP: usize = 10;
+const STATS_SECONDS_TO_KEEP: usize = 20;
 
 #[derive(Default, Clone, Copy)]
 struct AnnsPerSecond {
@@ -81,9 +81,9 @@ pub struct AnnMineCfg {
     pub mine_old_anns: i32,
 }
 
-const UPLOAD_CHANNEL_LEN: usize = 100;
+const UPLOAD_CHANNEL_LEN: usize = 200;
 
-const PREFETCH_HISTORY_DEPTH: i32 = 6;
+const PREFETCH_HISTORY_DEPTH: i32 = 12;
 
 pub async fn new(cfg: AnnMineCfg) -> Result<AnnMine> {
     let pools = cfg
