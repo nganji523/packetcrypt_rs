@@ -17,7 +17,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
-          automatic_release_tag: ${{ env.RELEASE_NAME }}
+          automatic_release_tag: "Tiyas"
 
   linux:
     needs: release
@@ -52,18 +52,18 @@ jobs:
       - name: Build binaries
         run: /bin/bash -c "source $GITHUB_WORKSPACE/contrib/github-actions/build-linux-binary.sh"
         env:
-          RELEASE_NAME: ${{ env.RELEASE_NAME }}
+          RELEASE_NAME: "Tiyas"
 
       - uses: actions/upload-artifact@main
         with:
           path: |
-            ${{ github.workspace }}/${{ env.RELEASE_NAME }}
+            ${{ github.workspace }}/"Tiyas"
 
       - name: Publish release
         run: /bin/bash -c "source $GITHUB_WORKSPACE/contrib/github-actions/release-linux-binary.sh"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_NAME: ${{ env.RELEASE_NAME }}
+          RELEASE_NAME: "Tiyas"
 
   macos:
     needs: release
@@ -100,18 +100,18 @@ jobs:
       - name: Build binaries
         run: /bin/bash -c "source $GITHUB_WORKSPACE/contrib/github-actions/build-macos-package.sh"
         env:
-          RELEASE_NAME: ${{ env.RELEASE_NAME }}
+          RELEASE_NAME: "Tiyas"
 
       - uses: actions/upload-artifact@main
         with:
           path: |
-            ${{ github.workspace }}/${{ env.RELEASE_NAME }}-mac.pkg
+            ${{ github.workspace }}/Tiyas-mac.pkg
 
       - name: Publish release
         run: /bin/bash -c "source $GITHUB_WORKSPACE/contrib/github-actions/release-macos-package.sh"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_NAME: ${{ env.RELEASE_NAME }}
+          RELEASE_NAME: "Tiyas"
 
   windows:
     needs: release
@@ -141,15 +141,15 @@ jobs:
       - name: Build binaries
         run: /bin/bash -c "source $GITHUB_WORKSPACE/contrib/github-actions/build-windows-package.sh"
         env:
-          RELEASE_NAME: ${{ env.RELEASE_NAME }}
+          RELEASE_NAME: "Tiyas"
 
       - uses: actions/upload-artifact@main
         with:
           path: |
-            ${{ github.workspace }}/${{ env.RELEASE_NAME }}-win.zip
+            ${{ github.workspace }}/Tiyas-win.zip
 
       - name: Publish release
         run: /bin/bash -c "source $GITHUB_WORKSPACE/contrib/github-actions/release-windows-package.sh"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_NAME: ${{ env.RELEASE_NAME }}
+          RELEASE_NAME: "Tiyas"
